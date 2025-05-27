@@ -182,3 +182,19 @@ require get_template_directory() . '/inc/customizer.php';
 if (defined('JETPACK__VERSION')) {
     require get_template_directory() . '/inc/jetpack.php';
 }
+
+// Register Custom Post Type 'Testimonial''
+function testimonial_post_type()
+{
+    register_post_type('testimonial', array(
+        'labels' => array(
+            'name' => 'Testimonial',
+            'singular_name' => 'Testimonial'
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'show_in_rest' => true
+    ));
+}
+add_action('init', 'testimonial_post_type');

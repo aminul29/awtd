@@ -139,6 +139,8 @@ add_action( 'widgets_init', 'advance_wordpress_theme_widgets_init' );
  */
 function advance_wordpress_theme_scripts() {
 	wp_enqueue_style( 'advance-wordpress-theme-style', get_stylesheet_uri(), array(), _S_VERSION );
+	// enqueue tailwind css
+	wp_enqueue_style( 'advance-wordpress-theme-tailwind', get_template_directory_uri() . './assets/css/tailwind.css', array(), _S_VERSION );
 	wp_style_add_data( 'advance-wordpress-theme-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'advance-wordpress-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );

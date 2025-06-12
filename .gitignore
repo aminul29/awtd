@@ -1,0 +1,22 @@
+# Ignore everything in wp-content
+/*
+
+# But keep these specific directories and files
+!.gitignore
+!plugins/
+!themes/
+
+# Ignore everything in plugins directory
+plugins/*
+# But keep the awtd plugin
+!plugins/awtd/
+
+# Ignore everything in themes directory
+themes/*
+# But keep the advance-wordpress-theme
+!themes/advance-wordpress-theme/
+
+# Ignore common files that shouldn't be versioned
+*.log
+.DS_Store
+Thumbs.db

@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+#primary-menu ul li{
+    @apply inline-block 
+}
+#primary-menu ul li a{
+    @apply inline-block mx-2
+}

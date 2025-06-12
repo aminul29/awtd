@@ -13,8 +13,13 @@ plugins/*
 
 # Ignore everything in themes directory
 themes/*
-# But keep the advance-wordpress-theme
+# But keep the advance-wordpress-theme and its specific directories
 !themes/advance-wordpress-theme/
+!themes/advance-wordpress-theme/assets/
+!themes/advance-wordpress-theme/assets/css/
+!themes/advance-wordpress-theme/assets/src/
+themes/advance-wordpress-theme/node_modules/
+themes/advance-wordpress-theme/package-lock.json
 
 # Ignore common files that shouldn't be versioned
 *.log

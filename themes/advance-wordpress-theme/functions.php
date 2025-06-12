@@ -53,6 +53,13 @@ function advance_wordpress_theme_setup() {
 		)
 	);
 
+	// Add footer menu registration
+	register_nav_menus(
+		array(
+			'footer-menu' => esc_html__( 'Footer Menu', 'advance-wordpress-theme' ),
+		)
+	);
+
 	/*
 		* Switch default core markup for search form, comment form, and comments
 		* to output valid HTML5.

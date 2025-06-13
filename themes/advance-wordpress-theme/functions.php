@@ -201,31 +201,14 @@ if ( class_exists( 'WooCommerce' ) ) {
  */
 require_once get_theme_file_path() .'/inc/codestar-framework/codestar-framework.php';
 
-if (class_exists('CSF')) {
-
-    // Create a options page
-    CSF::createOptions('theme_options', array(
-        'menu_title' => 'Theme Settings',
-        'menu_slug'  => 'theme-settings',
-    ));
-
-    // Add a simple text field
-    CSF::createSection('theme_options', array(
-        'title'  => 'General Settings',
-        'fields' => array(
-            array(
-                'id'    => 'site_welcome_text',
-                'type'  => 'text',
-                'title' => 'Welcome Message',
-                'desc'  => 'Enter a welcome message for your site.',
-            ),
-        ),
-    ));
-}
 
 
 
-
+/**
+ *
+ * Testimonial Custom Post Type
+ *
+ */
 
 function awtd_testimonial_meta_boxes(){
     add_meta_box(
@@ -267,3 +250,24 @@ function awtd_testimonial(){
     ]);
 }
 add_action("init", "awtd_testimonial");
+
+
+
+/**
+ *
+ * Slider Custom Post Type
+ *
+ */
+
+function awtd_slider(){
+	register_post_type('slide', [
+		'labels' => [
+			'name' => 'Sliders',
+			'singular_name' => 'Slider'
+		],
+		'supports' => ['title', 'editor', 'thumbnail', 'page-attributes'],
+		'public' => true,
+		'show_ui' => true
+	]);
+}
+add_action("init", "awtd_slider");

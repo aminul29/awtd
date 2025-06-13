@@ -8,18 +8,3 @@ Author: Md Aminul
 Author URI: http://mhdaminul.com
 */
 
-
-function awtd_testimonial(){
-    register_post_type("Testimonial", [
-        "labels" => [
-            "name" => "Testimonials",
-            "singular_name" => "Testimonial"
-        ],
-
-        "supports" => ["title", "editor", "thumbnail", "post-attributes"],
-
-        "public" => false,
-        "show_ui" => true
-    ]);
-}
-add_action("init", "awtd_testimonial");

@@ -191,3 +191,48 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+
+
+
+
+function awtd_testimonial_meta_boxes(){
+    add_meta_box(
+        "testimonial_rating", // id 
+        "Rating", // title
+        "testimonial_rating_cb", // callback function
+        "Testimonial", // post type
+        "normal", // context
+        "high" // priority
+
+    );
+}
+
+function testimonial_rating_cb($post){
+    $rating = get_post_meta($post->ID, "testimonial_rating", true);
+    echo '<label for="testimonial_rating">Enter Your Rating for the Service </label>';
+    echo '<input type="number" name="testimonial_rating" id="testimonial_rating" value="'. esc_attr($rating) .'" min="1" max="5">';
+}
+
+function save_testimonial_rating($post_id){
+	if(array_key_exists("testimonial_rating", $_POST)){
+		update_post_meta($post_id, "testimonial_rating", $_POST["testimonial_rating"]);
+	}
+}
+add_action("save_post_testimonial", "save_testimonial_rating");
+
+function awtd_testimonial(){
+    register_post_type("Testimonial", [
+        "labels" => [
+            "name" => "Testimonials",
+            "singular_name" => "Testimonial"
+        ],
+
+        "supports" => ["title", "editor", "thumbnail", "page-attributes", "author"],   
+
+        "public" => true,
+        "show_ui" => true,
+        "register_meta_box_cb" => "awtd_testimonial_meta_boxes"
+    ]);
+}
+add_action("init", "awtd_testimonial");

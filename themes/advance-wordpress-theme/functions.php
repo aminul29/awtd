@@ -200,6 +200,7 @@ if ( class_exists( 'WooCommerce' ) ) {
  *
  */
 require_once get_theme_file_path() .'/inc/codestar-framework/codestar-framework.php';
+require_once get_theme_file_path() .'/inc/metabox-and-options.php';
 
 
 

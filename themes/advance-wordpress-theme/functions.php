@@ -147,10 +147,15 @@ add_action( 'widgets_init', 'advance_wordpress_theme_widgets_init' );
 function advance_wordpress_theme_scripts() {
 	wp_enqueue_style( 'advance-wordpress-theme-style', get_stylesheet_uri(), array(), _S_VERSION );
 	// enqueue tailwind css
-	wp_enqueue_style( 'advance-wordpress-theme-tailwind', get_template_directory_uri() . './assets/css/tailwind.css', array(), _S_VERSION );
+	wp_enqueue_style( 'advance-wordpress-theme-tailwind', get_template_directory_uri() . '/assets/css/tailwind.css', array(), _S_VERSION );
+	// enqueue owl carousel
+	wp_enqueue_style( 'awtd-owl-carousel-css', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', array(), _S_VERSION );
+	wp_enqueue_style( 'awtd-owl-carousel-theme-css', get_template_directory_uri() . '/assets/css/owl.theme.default.css', array(), _S_VERSION );
 	wp_style_add_data( 'advance-wordpress-theme-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'advance-wordpress-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	// enqueue owl carousel js
+	wp_enqueue_script( 'awtd-owl-carousel-js', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -201,8 +206,6 @@ if ( class_exists( 'WooCommerce' ) ) {
  */
 require_once get_theme_file_path() .'/inc/codestar-framework/codestar-framework.php';
 require_once get_theme_file_path() .'/inc/metabox-and-options.php';
-
-
 
 
 /**

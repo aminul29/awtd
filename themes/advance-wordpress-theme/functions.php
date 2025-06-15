@@ -275,3 +275,32 @@ function awtd_slider(){
 	]);
 }
 add_action("init", "awtd_slider");
+
+
+
+// Check if elementor is active
+if(in_array('elementor/elementor.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+    // if true
+    include_once('elementor-addons/addons.php');
+
+    //add admin notice
+    function my_custom_admin_notice() {
+        ?>
+        <div class="notice notice-success is-dismissible">
+            <p>Elementor is active. You can now use our Elementor Addons</p>
+        </div>
+        <?php
+    }
+    add_action('admin_notices', 'my_custom_admin_notice');
+}else{
+    // if false; Elementor is not active
+    //add admin notice
+    function my_custom_admin_notice() {
+        ?>
+        <div class="notice notice-error">
+            <p>Elementor is not active. You cannot use our Elementor Addons</p>
+        </div>
+        <?php
+    }
+    add_action('admin_notices', 'my_custom_admin_notice');
+}
